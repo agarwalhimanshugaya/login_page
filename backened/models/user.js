@@ -7,7 +7,7 @@ const userSchema=new mongoose.Schema({
     name:{type:String,required:true},
     email:{type:String,required:true,unique:true},
     password:{type:String,required:true},
-    collegeName:{type:string,required:true},
+    collegeName:{type:String,required:true},
 });
 userSchema.methods.generateAuthToken=function(){
     const token=jwt.sign(
@@ -19,7 +19,7 @@ userSchema.methods.generateAuthToken=function(){
 }
 const validate=(user)=>{
     const schema=joi.object({
-        name:joi.string().min(5).max(10).required(),
+        name:joi.string().min(5).max(20).required(),
         email:joi.string().required(),
         password:passwordComplexity().required(),
         collegeName:joi.string().min(4).max(20).required(),
